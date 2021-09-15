@@ -1,7 +1,7 @@
 public class BSTNode <E> {
-    E Value;
-    BSTNode<E> left;
-    BSTNode<E> right;
+    private E Value;
+    private BSTNode<E> left;
+    private BSTNode<E> right;
 
     //constructor
     public BSTNode(){
