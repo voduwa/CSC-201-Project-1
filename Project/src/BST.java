@@ -1,6 +1,5 @@
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
+import java.util.Stack;
 
 public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
 //create iterator class at end
@@ -92,10 +91,39 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         return null;
     }
 
+    private class TreeIterator implements Iterator<BSTNode<E>>{
+        Stack<BSTNode<E>> myStack;
 
+
+        TreeIterator (BSTNode<E> rt){
+            myStack = new Stack<BSTNode<E>>();
+            while (rt != null){
+                myStack.push(rt);
+                rt = rt.getLeft();
+            }
+        }
+
+        public boolean hasNext(){
+            return !myStack.empty();
+        }
+
+        public E Next() {
+            BSTNode<E> node = myStack.pop();
+            E result = node.getValue();
+            if (node.getRight() != null){
+                node = node.getRight();
+                while (node != null) {
+                    myStack.push(node);
+                    node = node.getLeft();
+                }
+            }
+            return result;
+        }
+    }
 /*
 good job! :)
  */
 
 
 }
+// need iterator class
