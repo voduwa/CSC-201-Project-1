@@ -63,7 +63,15 @@ public class RectNode {
         return RectangleName + ", (" + x + "," + y + "), " + w + ", " + h;
     }
 
+    //Comparable for rectangle
+    public int compareTo(RectNode other) {
+        if (RectangleName.compareTo(other.RectangleName) <= 1)
+            return -1;
+        else return 1;
+
+        }
+
 }
 
-    //Comparable for rectangle
+
 

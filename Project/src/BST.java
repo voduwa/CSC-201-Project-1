@@ -107,7 +107,7 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
             return !myStack.empty();
         }
 
-        public E Next() {
+        public E next() {
             BSTNode<E> node = myStack.pop();
             E result = node.getValue();
             if (node.getRight() != null){
