@@ -92,11 +92,11 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
     }
 
     private class TreeIterator implements Iterator<BSTNode<E>>{
-        Stack<BSTNode<E>> myStack;
+         Stack<BSTNode<E>> myStack;
 
 
         TreeIterator (BSTNode<E> rt){
-            myStack = new Stack<BSTNode<E>>();
+             myStack = new Stack<BSTNode<E>>();
             while (rt != null){
                 myStack.push(rt);
                 rt = rt.getLeft();
@@ -118,6 +118,17 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
                 }
             }
             return result;
+        }
+        //BST tester (not too sure so some things could be changed)
+        public static void main(String[] args) {
+            String testing = "T E S T I N G";
+            String[] key = testing.split(" ");
+            stringIntegerArrayST<String, Integer> string = new stringIntegerArrayST<String, Integer>(50);
+            int n = key.length;
+            for (int i = 0; i < n; i++)
+                string.put(key[i], i);
+            for (String s: string)
+                System.out.println(s + " " + string.get(s));
         }
     }
 /*
