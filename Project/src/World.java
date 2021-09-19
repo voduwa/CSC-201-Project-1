@@ -1,7 +1,6 @@
 import java.awt.*;
 
 public class World {
-public Rectangle other;
 
     public Rectangle createIntersection(Rectangle r) {
         Rectangle rect1 = new Rectangle () ;
@@ -11,8 +10,8 @@ public Rectangle other;
         return rect2;
     }
 
-    public boolean intersects (Rectangle other, int x, int y, int w, int h) {
-        return intersectsOnX(other.x, other.w) && intersectsOnY(other.y, other.h);
+    public boolean intersects (Rectangle r, int x, int y, int w, int h) {
+        return intersectsOnX(r.x, r.w) && intersectsOnY(r.y, r.h);
     }
 
     private boolean intersectsOnX(int x, int w) {
@@ -25,7 +24,7 @@ public Rectangle other;
         if (y + h <= y) return false;
         return true;
     }
-    public boolean contains(Rectangle other) {
+    public boolean contains(Rectangle r) {
         //now this just needs to be added and World class will be complete
     }
 }
