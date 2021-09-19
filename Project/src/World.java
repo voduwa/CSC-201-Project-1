@@ -1,24 +1,28 @@
 import java.awt.*;
 
 public class World {
-private Rectangle other;
-private int ox; //other x
-private int ow; //other width
-private int oy;//other y
-private int oh; //other height
+public Rectangle other;
 
-    public boolean intersects (Rectangle other) {
-        return intersectsOnX(other.x, other.width) && intersectsOnY(other.y, other.height);
+    public Rectangle createIntersection(Rectangle r) {
+        Rectangle rect1 = new Rectangle () ;
+        Rectangle rect2 = new Rectangle ();
+        rect2.setRect(r);
+        rect2.createIntersection(rect1);
+        return rect2;
     }
 
-    private boolean intersectsOnX(int ox, int ow) {
-        if (this.ox + ow <= ox) return false;
-        if (ox + ow <= this.ox) return false;
+    public boolean intersects (Rectangle other, int x, int y, int w, int h) {
+        return intersectsOnX(other.x, other.w) && intersectsOnY(other.y, other.h);
+    }
+
+    private boolean intersectsOnX(int x, int w) {
+        if (x + w <= x) return false;
+        if (x + w <= x) return false;
         return true;
     }
-    private boolean intersectsOnY(int oy, int oh) {
-        if (this.oy + oh <= oy) return false;
-        if (oy + oh <= this.oy) return false;
+    private boolean intersectsOnY(int y, int h) {
+        if (y + h <= y) return false;
+        if (y + h <= y) return false;
         return true;
     }
     public boolean contains(Rectangle other) {
