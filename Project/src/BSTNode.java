@@ -1,9 +1,10 @@
 public class BSTNode <E> {
+    // private variables for the BSTNode
     private E Value;
     private BSTNode<E> left;
     private BSTNode<E> right;
 
-    //constructor
+    //constructors
     public BSTNode(){
         Value = null;
         left = null;
@@ -13,6 +14,8 @@ public class BSTNode <E> {
     public BSTNode(E val, BSTNode<E> l , BSTNode<E> r){
         left = l; right = r; Value = val;}
 
+
+    // getters and setters for BSTNode
     public BSTNode<E> getLeft() {
         return left;
     }

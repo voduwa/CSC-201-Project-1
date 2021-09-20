@@ -16,8 +16,8 @@ public class World {
 
     private boolean intersectsOnX(int x, int w) {
         if (x + w <= x) return false;
-        if (x + w <= x) return false;
-        return true;
+        else if (x + w <= x) return false;
+        else return true;
     }
     private boolean intersectsOnY(int y, int h) {
         if (y + h <= y) return false;

@@ -1,5 +1,5 @@
 public class RectNode {
-
+    // private variables for RectNode
     private String RectangleName;
     private int x;
     private int y;
