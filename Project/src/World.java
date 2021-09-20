@@ -1,30 +1,22 @@
 import java.awt.*;
 
 public class World {
+    public static final int WORlD_X = 0;
+    public static final int WORlD_Y = 0;
+    public static final int WORlD_W = 1024;
+    public static final int WORlD_H = 1024;
+    Rectangle world_rect = new Rectangle(WORlD_X,WORlD_Y,WORlD_W, WORlD_H);
+
+    /*
+    if(world_rect.contains(new_rect))
+    else{it cannot}
+    */
 
     public Rectangle createIntersection(Rectangle r) {
-        Rectangle rect1 = new Rectangle () ;
-        Rectangle rect2 = new Rectangle ();
-        rect2.setRect(r);
-        rect2.createIntersection(rect1);
-        return rect2;
-    }
+        Rectangle rect1 = new Rectangle (1,3,4,5) ;
+        Rectangle rect2 = new Rectangle (2,4,6,7);
+        //if ((rect1,rect2)){}
+        //else{}
 
-    public boolean intersects (Rectangle r, int x, int y, int w, int h) {
-        return intersectsOnX(r.x, r.w) && intersectsOnY(r.y, r.h);
-    }
-
-    private boolean intersectsOnX(int x, int w) {
-        if (x + w <= x) return false;
-        else if (x + w <= x) return false;
-        else return true;
-    }
-    private boolean intersectsOnY(int y, int h) {
-        if (y + h <= y) return false;
-        if (y + h <= y) return false;
-        return true;
-    }
-    public boolean contains(Rectangle r) {
-        //now this just needs to be added and World class will be complete
     }
 }

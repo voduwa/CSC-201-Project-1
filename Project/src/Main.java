@@ -40,6 +40,16 @@ public class Main {
             System.out.println("Something went wrong");
             System.exit(1);
         }
+        while(myInput.hasNext()){
+            String thisLine = myInput.nextLine().replace("\\S+", " ");
+            if(thisLine != ""){
+                String[] command = thisLine.split(" ");
+                switch (command[0]){
+                    case "insert":
+                        // String name = command[1] int x = Interger.ParseInt(command[2])
+                }
+            }
+        }
 
 
     }

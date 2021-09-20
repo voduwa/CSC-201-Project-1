@@ -88,21 +88,39 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         }
     }
 
-    @Override
-    public Iterator iterator() {
-        return null;
+    public void print(){
+        TreeIterator itr = new TreeIterator(root);
+        if (itr.hasNext()){
+            System.out.println(itr.next());
+        }
+    }
+
+    public Iterator<BSTNode<E>> iterator(){
+
+        return new BST.TreeIterator(this.root);
     }
     // Tree iterator class
+
     private class TreeIterator implements Iterator<BSTNode<E>>{
          // creating stack to initialize iterator
-         Stack<BSTNode<E>> myStack;
+         Stack<BSTNode<E>> myStack = new Stack<>();
 
         //Tree iterator goes all the way left
-        TreeIterator (BSTNode<E> rt){
-             myStack = new Stack<BSTNode<E>>();
-            while (rt != null){
-                myStack.push(rt);
-                rt = rt.getLeft();
+        private TreeIterator (BSTNode<E> rt){
+            this.generateStack(myStack, rt);
+
+//             myStack = new Stack<BSTNode<E>>();
+//            while (rt != null){
+//                myStack.push(rt);
+//                rt = rt.getLeft();
+//            }
+        }
+
+        public void generateStack(Stack myStack, BSTNode<E> rootnote){
+            if (rootnote!= null){
+                generateStack(myStack, rootnote.getRight());
+                myStack.push(rootnote);
+                generateStack(myStack, rootnote.getLeft());
             }
         }
         // checks to see if stack is empty or not
@@ -110,29 +128,11 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
             return !myStack.empty();
         }
         // next method for iterator
-        public E next() {
+        public BSTNode<E> next() {
             BSTNode<E> node = myStack.pop();
-            E result = node.getValue();
-            if (node.getRight() != null){
-                node = node.getRight();
-                while (node != null) {
-                    myStack.push(node);
-                    node = node.getLeft();
-                }
-            }
-            return result;
+            return node;
         }
-        //BST tester (not too sure so some things could be changed)
-        //why did you create another main class? - matthew
-        public static void main(String[] args) {
-            String testing = "T E S T I N G";
-            String[] key = testing.split(" ");
-            ArrayList<String> stringTest = new ArrayList<String>(50);
-            int n = key.length;
-            for (int i = 0; i < n; i++)
-                stringTest.get(i);
-            for (String s: string)
-                System.out.println(s + " " + string.get(s));
+
         }
     }
 /*
