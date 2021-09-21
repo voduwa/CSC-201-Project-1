@@ -17,6 +17,6 @@ public class World {
         Rectangle rect2 = new Rectangle (2,4,6,7);
         //if ((rect1,rect2)){}
         //else{}
-
+        return null;
     }
 }

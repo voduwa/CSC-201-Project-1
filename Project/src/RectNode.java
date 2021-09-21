@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class RectNode {
     // private variables for RectNode
     private String RectangleName;
@@ -7,6 +9,7 @@ public class RectNode {
     private int h;
 
     // Rectangle constructor
+    // check rectangle
     public RectNode(String name, int x, int y, int w, int h) {
         RectangleName = name;
         this.x = x;

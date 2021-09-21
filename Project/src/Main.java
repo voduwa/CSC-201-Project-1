@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.FileReader;
@@ -20,6 +21,22 @@ public class Main {
 
     public static void main(String[] args) {
 
+        String testing = "T E S T I N G";
+        String[] key = testing.split(" ");
+        BSTNode the = new BSTNode();
+        BST tree = new BST();
+
+        ArrayList<String> stringTest = new ArrayList<String>(50);
+        tree.insert("t");
+        tree.insert("e");
+        tree.insert("s");
+        tree.insert('t');
+        tree.print();
+
+
+
+
+        /*
         //Asking for file name if not written in command line
         String myFilename;
         if (args.length > 0){
@@ -50,8 +67,7 @@ public class Main {
                 }
             }
         }
-
+*/
 
     }
-
 }
