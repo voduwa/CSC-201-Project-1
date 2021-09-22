@@ -25,7 +25,7 @@ public class BSTNode <E> {
     }
 
     public E getValue() {
-        return Value;
+        return this.Value;
     }
 
     public void setLeft(BSTNode<E> left) {

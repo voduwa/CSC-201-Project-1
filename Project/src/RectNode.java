@@ -31,14 +31,12 @@ public class RectNode implements Comparable<RectNode>{
     //To string returns name, (x,y), w, h
     @Override
     public String toString() {
-        return RectangleName + "(" + rectangle.x + ", " + rectangle.y + ", " + rectangle.width + ", " + rectangle.height + ") ";
+        return "(<" + RectangleName + ">, <" + rectangle.x + ">, <" + rectangle.y + ">, <" + rectangle.width + ">, <" + rectangle.height + ">) ";
     }
 
     //Comparable for rectangle
     public int compareTo(RectNode other) {
-        if (RectangleName.compareTo(other.RectangleName) <= 1)
-            return -1;
-        else return 1;
+        return this.RectangleName.compareTo(other.RectangleName);
 
         }
 
