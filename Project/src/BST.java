@@ -14,6 +14,15 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         root = null;
         nodeCount = 0;
     }
+    // clear the tree
+    public void clear(){
+        this.root = null;
+        this.nodeCount = 0;
+    }
+
+    public int nodeCount() {return this.nodeCount;}
+
+    public boolean isEmpty(){return this.nodeCount == 0;}
 
     //Insert method for rectangle
     //Assuming that the rectangle has already been checked for correct parameters
@@ -25,13 +34,17 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
     //if not null than insertHelp calls itself comparing to next node
     private BSTNode<E> insertHelp(BSTNode<E> root, E trct){
         //if the tree is empty
-        if (root == null) return new BSTNode<E>(trct);
+        if (root == null) {
+            return new BSTNode<E>(trct);
+        }
         if (root.getValue().compareTo(trct) > 0)
-            return insertHelp(root.getLeft(), trct);
+            root.setLeft(insertHelp(root.getLeft(), trct));
         else if (root.getValue().compareTo(trct) == 0)
-            return root;
-        else
-            return insertHelp(root.getRight(), trct);
+            root.setLeft(insertHelp(root.getLeft(), trct));
+        else {
+            root.setRight(insertHelp(root.getRight(), trct));
+        }
+        return root;
     }
     //remove method for BST
     public E remove (E trct){
@@ -88,16 +101,18 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         }
     }
 
+    // Method to print out BST in order
     public void print(){
-        TreeIterator itr = new TreeIterator(root);
-        if (itr.hasNext()){
-            System.out.println(itr.next());
+//        TreeIterator itr = new TreeIterator(root);
+        TreeIterator itr = new TreeIterator(this.root);
+        while (itr.hasNext()){
+            System.out.print(itr.next().getValue());
         }
     }
 
     public Iterator<BSTNode<E>> iterator(){
 
-        return new BST.TreeIterator(this.root);
+        return new TreeIterator(this.root);
     }
     // Tree iterator class
 
@@ -129,8 +144,7 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         }
         // next method for iterator
         public BSTNode<E> next() {
-            BSTNode<E> node = myStack.pop();
-            return node;
+            return myStack.pop();
         }
 
         }

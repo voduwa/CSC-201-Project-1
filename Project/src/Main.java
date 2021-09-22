@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -26,11 +27,29 @@ public class Main {
         BSTNode the = new BSTNode();
         BST tree = new BST();
 
+        Rectangle a = new Rectangle(1,2, 3, 4);
+        Rectangle b = new Rectangle(1,2,3,4);
+        Rectangle c = new Rectangle(1,2,3,4);
+        Rectangle d = new Rectangle(1,2,3,4);
+        RectNode test = new RectNode("c", a );
+        RectNode test1 = new RectNode("d", b);
+        RectNode test2 = new RectNode("a", c);
+        RectNode test3 = new RectNode("b", d);
+
         ArrayList<String> stringTest = new ArrayList<String>(50);
-        tree.insert("t");
-        tree.insert("e");
-        tree.insert("s");
-        tree.insert('t');
+        tree.insert(test);
+        tree.insert(test1);
+        tree.insert(test2);
+        tree.insert(test3);
+        tree.print();
+
+        tree.clear();
+        tree.insert("d");
+        tree.insert("c");
+        tree.insert("b");
+        tree.insert("a");
+
+        System.out.println(" ");
         tree.print();
 
 

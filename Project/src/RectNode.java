@@ -1,69 +1,37 @@
+import java.awt.*;
 import java.util.Comparator;
 
-public class RectNode {
+public class RectNode implements Comparable<RectNode>{
     // private variables for RectNode
     private String RectangleName;
-    private int x;
-    private int y;
-    private int w;
-    private int h;
+    private Rectangle rectangle;
 
     // Rectangle constructor
     // check rectangle
-    public RectNode(String name, int x, int y, int w, int h) {
+
+    public RectNode (String name, Rectangle rect){
         RectangleName = name;
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
+        rectangle = rect;
     }
 
     // Rectangle getters
     public String getRectangleName() {
         return RectangleName;
     }
+    public Rectangle getRectangle() {return rectangle;}
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getW() {
-        return w;
-    }
-
-    public int getH() {
-        return h;
-    }
 
     // Rectangle setters
     public void setRectangleName(String rectangleName) {
         RectangleName = rectangleName;
     }
+    public void setRectangle(Rectangle rectangle) {this.rectangle = rectangle;}
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setW(int w) {
-        this.w = w;
-    }
-
-    public void setH(int h) {
-        this.h = h;
-    }
 
     //To string returns name, (x,y), w, h
     @Override
     public String toString() {
-        return RectangleName + ", (" + x + "," + y + "), " + w + ", " + h;
+        return RectangleName + "(" + rectangle.x + ", " + rectangle.y + ", " + rectangle.width + ", " + rectangle.height + ") ";
     }
 
     //Comparable for rectangle
