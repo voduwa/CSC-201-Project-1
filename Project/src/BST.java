@@ -46,6 +46,17 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         }
         return root;
     }
+    // removeNode method
+    public BSTNode<E> removeNode (BSTNode<E> node){
+        BSTNode<E> temp = node;
+        if (temp != null){
+            root = removehelp(node, node.getValue());
+            nodeCount--;
+        }
+        return temp;
+    }
+
+
     //remove method for BST
     public E remove (E trct){
         E temp = findhelp(root, trct);

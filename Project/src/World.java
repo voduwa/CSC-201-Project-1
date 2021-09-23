@@ -64,7 +64,7 @@ public class World {
         while (itr.hasNext()){
             temp = itr.next();
             if (name == temp.getValue().getRectangleName()){
-                world_tree.remove(temp.getValue());
+                world_tree.removeNode(temp);
                 removed = true;
             } else {
 
@@ -83,7 +83,7 @@ public class World {
         while (itr.hasNext()){
             temp = itr.next();
             if (rect == temp.getValue().getRectangle()){
-                world_tree.remove(temp.getValue());
+                world_tree.removeNode(temp);
                 removed = true;
             } else {
 
