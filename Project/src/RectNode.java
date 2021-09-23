@@ -9,6 +9,12 @@ public class RectNode implements Comparable<RectNode>{
     // Rectangle constructor
     // check rectangle
 
+
+    public RectNode(){
+        this.RectangleName = null;
+        this.rectangle = null;
+    }
+
     public RectNode (String name, Rectangle rect){
         RectangleName = name;
         rectangle = rect;

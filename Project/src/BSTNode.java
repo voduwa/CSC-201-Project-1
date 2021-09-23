@@ -11,6 +11,7 @@ public class BSTNode <E> {
         right = null;
     }
     public BSTNode(E val) { left = right = null; Value = val;}
+
     public BSTNode(E val, BSTNode<E> l , BSTNode<E> r){
         left = l; right = r; Value = val;}
 

@@ -2,6 +2,7 @@ import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.FileReader;
@@ -35,40 +36,42 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String testing = "T E S T I N G";
-        String[] key = testing.split(" ");
-        BSTNode the = new BSTNode();
-        BST tree = new BST();
-
-        Rectangle a = new Rectangle(1,2, 3, 4);
-        Rectangle b = new Rectangle(1,2,3,4);
-        Rectangle c = new Rectangle(1,2,3,4);
-        Rectangle d = new Rectangle(1,2,3,4);
-        RectNode test = new RectNode("c", a );
-        RectNode test1 = new RectNode("d", b);
-        RectNode test2 = new RectNode("a", c);
-        RectNode test3 = new RectNode("b", d);
-
-        ArrayList<String> stringTest = new ArrayList<String>(50);
-        tree.insert(test);
-        tree.insert(test1);
-        tree.insert(test2);
-        tree.insert(test3);
-        tree.print();
-
-        tree.clear();
-        tree.insert("c");
-        tree.insert("d");
-        tree.insert("a");
-        tree.insert("b");
-
-        System.out.println(" ");
-        tree.print();
-
-
+//        String testing = "T E S T I N G";
+//        String[] key = testing.split(" ");
+//        BSTNode the = new BSTNode();
+//        BST tree = new BST();
+//
+//        Rectangle a = new Rectangle(1,2, 3, 4);
+//        Rectangle b = new Rectangle(1,2,3,4);
+//        Rectangle c = new Rectangle(1,2,3,4);
+//        Rectangle d = new Rectangle(1,2,3,4);
+//        RectNode test = new RectNode("c", a );
+//        RectNode test1 = new RectNode("d", b);
+//        RectNode test2 = new RectNode("a", c);
+//        RectNode test3 = new RectNode("b", d);
+//
+//        ArrayList<String> stringTest = new ArrayList<String>(50);
+//        tree.insert(test);
+//        tree.insert(test1);
+//        tree.insert(test2);
+//        tree.insert(test3);
+//        tree.print();
+//
+//        tree.clear();
+//        tree.insert("c");
+//        tree.insert("d");
+//        tree.insert("a");
+//        tree.insert("b");
+//
+//        System.out.println(" ");
+//        tree.print();
 
 
-        /*
+        //create a World class
+        World myWolrd = new World();
+
+
+
         //Asking for file name if not written in command line
         String myFilename;
         if (args.length > 0){
@@ -90,16 +93,69 @@ public class Main {
             System.exit(1);
         }
         while(myInput.hasNext()){
+
             String thisLine = myInput.nextLine().replace("\\S+", " ");
-            if(thisLine != ""){
+
+            if(!thisLine.equals("")){
                 String[] command = thisLine.split(" ");
-                switch (command[0]){
-                    case "insert":
-                        // String name = command[1] int x = Interger.ParseInt(command[2])
+
+                //case insert
+                if ((Objects.equals(command[0], "insert")) {
+
+                    // String name = command[1] int x = Interger.ParseInt(command[2])
+
+
+                    //declare the variable that will be passed into the rectNode
+                    String thisLineName;
+                    int thisLine_x, thisLine_y, thisLine_w, thisLine_h;
+
+                    //read the node from the command
+                    thisLineName = command[1];
+                    thisLine_x = Integer.parseInt(command[2]);
+                    thisLine_y = Integer.parseInt(command[3]);
+                    thisLine_w = Integer.parseInt(command[4]);
+                    thisLine_h = Integer.parseInt(command[5]);
+
+                    //create a new rectangle object based on the input values
+                    Rectangle rectangle = new Rectangle(thisLine_x, thisLine_y, thisLine_w, thisLine_h);
+
+                    //create a new rectangle node object to store the rectangle we just created
+                    RectNode newRect = new RectNode(thisLineName, rectangle);
+
+                    //call on insertCheck method in the world class to insert the node
+                    myWolrd.insertCheck(newRect);
+                }
+
+
+                //case remove
+                   if ((Objects.equals(command[0], "remove")){
+
+                    // since there are two scenarios if we encounter the remove keyword
+
+                    //first scenario, when the command only provides the name
+                    if (command.length == 2) {
+
+                        String thiLineName = command[1];
+
+                        //call the removeNode method in myWorld
+                        myWolrd.removeNode(thiLineName);
+
+                    }
+
+
+                    //second scenario, when the command only provides the parameters for the rectangle
+                    if (command.length == 5) {
+
+                        int thisLine_x, thisLine_y, thisLine_w, thisLine_h;
+
+                    }
+                }
+
+
                 }
             }
         }
-*/
+
 
     }
 }
