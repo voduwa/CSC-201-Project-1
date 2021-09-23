@@ -33,16 +33,17 @@ public class World {
         }
     }
 
+    // method to find pairs of rectangles that intersect
     public void intersectionPairs(){
         BSTNode<RectNode> temp1;
         BSTNode<RectNode> temp2;
-        Iterator first_itr = world_tree.iterator();
+        Iterator<BSTNode<RectNode>> first_itr = world_tree.iterator();
 
         while(first_itr.hasNext()){
-            temp1 = world_tree.iterator().next();
-            Iterator second_itr = world_tree.iterator();
+            temp1 = first_itr.next();
+            Iterator<BSTNode<RectNode>> second_itr = world_tree.iterator();
             while (second_itr.hasNext()){
-                temp2 = world_tree.iterator().next();
+                temp2 = second_itr.next();
                 if (temp1 == temp2){
 
                 }
@@ -53,6 +54,25 @@ public class World {
         }
 
 
+    }
+
+    // remove name method
+    public void removeNode (String name){
+        Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
+        BSTNode<RectNode> temp;
+        boolean removed = false;
+        while (itr.hasNext()){
+            temp = itr.next();
+            if (name == temp.getValue().getRectangleName()){
+                world_tree.remove(temp.getValue());
+                removed = true;
+            } else {
+
+            }
+        }
+        if (removed == true){
+
+        } else System.out.println("Rectangle rejected <" + name + ">");
     }
 
 
