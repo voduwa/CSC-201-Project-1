@@ -75,5 +75,55 @@ public class World {
         } else System.out.println("Rectangle rejected <" + name + ">");
     }
 
+    // remove by rectangle dimensions
+    public void removeNode (Rectangle rect){
+        Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
+        BSTNode<RectNode> temp;
+        boolean removed = false;
+        while (itr.hasNext()){
+            temp = itr.next();
+            if (rect == temp.getValue().getRectangle()){
+                world_tree.remove(temp.getValue());
+                removed = true;
+            } else {
+
+            }
+        }
+        if (removed == true){
+
+        } else System.out.println("Rectangle rejected <" + rect + ">");
+    }
+    public void search (String name){
+        Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
+        BSTNode<RectNode> temp;
+        boolean found = false;
+        while (itr.hasNext()){
+            temp = itr.next();
+            if (name == temp.getValue().getRectangleName()){
+                System.out.println("Rectangle found: " + temp.getValue().toString());
+                found = true;
+            }
+        }
+        if (found == false){
+            System.out.println("Rectangle not found: " + name);
+        }
+    }
+
+    public void regionSearch (Rectangle rect){
+        Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
+        BSTNode<RectNode> temp;
+        System.out.println("Rectangles intersecting region" + rect);
+        while (itr.hasNext()){
+            temp = itr.next();
+            if (temp.getValue().getRectangle().height < 0 || temp.getValue().getRectangle().width < 0){
+                // rectangle rejected
+            } else if (rect.intersects(temp.getValue().getRectangle())){
+                System.out.println(temp.getValue().getRectangleName());
+            } else {
+                // rectangle rejected
+            }
+        }
+    }
+
 
 }

@@ -65,7 +65,7 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         else return findhelp(rt.getRight(), trct);
 
     }
-    //
+    // remove helper method
     private BSTNode removehelp (BSTNode<E> rt, E trct){
         if (rt == null) return null;
         if (rt.getValue().compareTo(trct) > 0)
