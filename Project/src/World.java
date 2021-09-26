@@ -132,15 +132,19 @@ public class World {
         }
     }
 
+// I commented this part of the code because in order to print out the depth of each node I used the BST
+//    public void dump() {
+//        Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
+//        BSTNode<RectNode> temp;
+//
+//        while (itr.hasNext()) {
+//            temp = itr.next();
+//            System.out.println();
+//        }
+//    }
 
-    public void dump() {
-        Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
-        BSTNode<RectNode> temp;
-
-        while (itr.hasNext()) {
-            temp = itr.next();
-            System.out.println();
-        }
+    public void BSTdump() {
+        world_tree.inorder();
     }
 
 }

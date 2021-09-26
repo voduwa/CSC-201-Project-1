@@ -1,3 +1,5 @@
+import com.sun.security.jgss.GSSUtil;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
@@ -121,6 +123,30 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         }
     }
 
+
+    //inorder traversal
+    public void inorder(){
+        System.out.println("BST dump: ");
+        inorderHelp(root, 0);
+        System.out.println("BST size is " + nodeCount);
+    }
+
+    public void inorderHelp(BSTNode root, int depth){
+
+        if (root != null){
+            BSTNode<RectNode> temp = root;
+            temp.depth = depth;
+
+            inorderHelp(temp.getLeft(), depth+1);
+            System.out.print("Node has depth <" + temp.depth + ">, ") ;
+            System.out.println("Value (<" + temp.getValue().getRectangleName() + ">," + temp.getValue().getRectangle());
+
+        }
+
+
+
+    }
+
     public Iterator<BSTNode<E>> iterator(){
 
         return new TreeIterator(this.root);
@@ -159,6 +185,9 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         }
 
         }
+
+
+
     }
 /*
 good job! :)

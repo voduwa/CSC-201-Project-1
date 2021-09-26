@@ -71,10 +71,9 @@ public class Main {
         World myWolrd = new World();
 
 
-
         //Asking for file name if not written in command line
         String myFilename;
-        if (args.length > 0){
+        if (args.length > 0) {
             myFilename = args[0];
         } else {
             keyboard = new Scanner(System.in);
@@ -85,18 +84,18 @@ public class Main {
         //opens and checks for file to read
         try {
             myInput = new Scanner(new FileReader(myFilename));
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("File not found");
             System.exit(0);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Something went wrong");
             System.exit(1);
         }
-        while(myInput.hasNext()){
+        while (myInput.hasNext()) {
 
             String thisLine = myInput.nextLine().replace("\\S+", " ");
 
-            if(!thisLine.equals("")){
+            if (!thisLine.equals("")) {
                 String[] command = thisLine.split(" ");
 
 
@@ -129,15 +128,15 @@ public class Main {
 
 
                 //case remove
-                if (command[0].equals("remove")){
+                if (command[0].equals("remove")) {
 
                     // since there are two scenarios if we encounter the remove keyword
                     //first scenario, when the command only provides the name
                     if (command.length == 2) {
-                         thisLineName = command[1];
+                        thisLineName = command[1];
                         //call the removeNode method in myWorld
                         myWolrd.removeNode(thisLineName);
-                     }
+                    }
 
                     //second scenario, when the command only provides the parameters for the rectangle
                     if (command.length == 5) {
@@ -172,13 +171,13 @@ public class Main {
 
 
                 //case intersections
-                if (command[0].equals("intersections")){
+                if (command[0].equals("intersections")) {
 
                     //call intersectionpairs from world
                     myWolrd.intersectionPairs();
                 }
 
-                if(command[0].equals("search")){
+                if (command[0].equals("search")) {
 
                     thisLineName = command[1];
 
@@ -190,12 +189,10 @@ public class Main {
                 if (command[0].equals("dump")) {
 
                     //call dump from world class
-                }
-            }
+                    myWolrd.BSTdump();
                 }
             }
         }
-
-
     }
 }
+

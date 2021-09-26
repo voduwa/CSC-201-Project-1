@@ -3,14 +3,16 @@ public class BSTNode <E> {
     private E Value;
     private BSTNode<E> left;
     private BSTNode<E> right;
+    protected int depth;
 
     //constructors
     public BSTNode(){
         Value = null;
         left = null;
         right = null;
+        depth = 0;
     }
-    public BSTNode(E val) { left = right = null; Value = val;}
+    public BSTNode(E val) { left = right = null; Value = val; depth = 0;}
 
     public BSTNode(E val, BSTNode<E> l , BSTNode<E> r){
         left = l; right = r; Value = val;}
