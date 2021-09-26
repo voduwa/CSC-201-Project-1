@@ -49,7 +49,7 @@ public class World {
                 }
                 else if (temp1.getValue().getRectangle().intersects(temp2.getValue().getRectangle())){
                     System.out.println(temp1.getValue().toString() + ":" + temp2.getValue().toString());
-                } else {}
+                } else{}
             }
         }
 
@@ -63,16 +63,17 @@ public class World {
         boolean removed = false;
         while (itr.hasNext()){
             temp = itr.next();
-            if (name == temp.getValue().getRectangleName()){
+            if (name.equals(temp.getValue().getRectangleName())){
                 world_tree.removeNode(temp);
                 removed = true;
-            } else {
-
+                break;
             }
         }
-        if (removed == true){
 
-        } else System.out.println("Rectangle rejected <" + name + ">");
+        //if there is no rectangle being removed, then print out the rejection info
+        if (!removed){
+            System.out.println("Rectangle rejected <" + name + ">");
+        }
     }
 
     // remove by rectangle dimensions
@@ -85,14 +86,20 @@ public class World {
             if (rect == temp.getValue().getRectangle()){
                 world_tree.removeNode(temp);
                 removed = true;
-            } else {
 
+                //when the first rectangle in the tree is found, we terminate the while loop
+                // so the second one won't be removed
+                break;
             }
         }
-        if (removed == true){
 
-        } else System.out.println("Rectangle rejected <" + rect + ">");
+        //after the while loop, if there is no rectangle being removed, then print out some information
+        if (!removed) {
+            System.out.println("Rectangle rejected (" + rect + ")");
+        }
     }
+
+
     public void search (String name){
         Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
         BSTNode<RectNode> temp;
@@ -125,5 +132,15 @@ public class World {
         }
     }
 
+
+    public void dump() {
+        Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
+        BSTNode<RectNode> temp;
+
+        while (itr.hasNext()) {
+            temp = itr.next();
+            System.out.println();
+        }
+    }
 
 }

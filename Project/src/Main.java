@@ -99,15 +99,16 @@ public class Main {
             if(!thisLine.equals("")){
                 String[] command = thisLine.split(" ");
 
+
+                //declare the variables that will be passed into the methods
+                String thisLineName;
+                int thisLine_x, thisLine_y, thisLine_w, thisLine_h;
+
+
                 //case insert
-                if ((Objects.equals(command[0], "insert")) {
+                if (Objects.equals(command[0], "insert")) {
 
                     // String name = command[1] int x = Interger.ParseInt(command[2])
-
-
-                    //declare the variable that will be passed into the rectNode
-                    String thisLineName;
-                    int thisLine_x, thisLine_y, thisLine_w, thisLine_h;
 
                     //read the node from the command
                     thisLineName = command[1];
@@ -128,30 +129,69 @@ public class Main {
 
 
                 //case remove
-                   if ((Objects.equals(command[0], "remove")){
+                if (command[0].equals("remove")){
 
                     // since there are two scenarios if we encounter the remove keyword
-
                     //first scenario, when the command only provides the name
                     if (command.length == 2) {
-
-                        String thiLineName = command[1];
-
+                         thisLineName = command[1];
                         //call the removeNode method in myWorld
-                        myWolrd.removeNode(thiLineName);
-
-                    }
-
+                        myWolrd.removeNode(thisLineName);
+                     }
 
                     //second scenario, when the command only provides the parameters for the rectangle
                     if (command.length == 5) {
+                        thisLine_x = Integer.parseInt(command[1]);
+                        thisLine_y = Integer.parseInt(command[2]);
+                        thisLine_w = Integer.parseInt(command[3]);
+                        thisLine_h = Integer.parseInt(command[4]);
 
-                        int thisLine_x, thisLine_y, thisLine_w, thisLine_h;
+                        // create a rectangle object that has the parameter of the input values
+                        Rectangle removeRect = new Rectangle(thisLine_x, thisLine_y, thisLine_w, thisLine_h);
 
+                        //call the removeNode method in world to remove the rectangle
+                        myWolrd.removeNode(removeRect);
                     }
                 }
 
+                //case regionsearch
+                if (command[0].equals("regionsearch")) {
 
+                    thisLine_x = Integer.parseInt(command[1]);
+                    thisLine_y = Integer.parseInt(command[2]);
+                    thisLine_w = Integer.parseInt(command[3]);
+                    thisLine_h = Integer.parseInt(command[4]);
+
+                    Rectangle RegionRect = new Rectangle(thisLine_x, thisLine_y, thisLine_w, thisLine_h)
+
+                    //call regionsearch method in world
+                    myWolrd.regionSearch(RegionRect);
+
+
+                }
+
+
+                //case intersections
+                if (command[0].equals("intersections")){
+
+                    //call intersectionpairs from world
+                    myWolrd.intersectionPairs();
+                }
+
+                if(command[0].equals("search")){
+
+                    thisLineName = command[1];
+
+                    //call search method from myWorld
+                    myWolrd.search(thisLineName);
+
+                }
+
+                if (command[0].equals("dump")) {
+
+                    //call dump from world class
+                }
+            }
                 }
             }
         }
