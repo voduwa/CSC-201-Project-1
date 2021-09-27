@@ -111,7 +111,7 @@ public class Main {
                 if (Objects.equals(command[0], "insert")) {
 
                     // String name = command[1] int x = Interger.ParseInt(command[2])
-
+   //fixed
                     //read the node from the command
                     thisLineName = command[1];
                     thisLine_x = Integer.parseInt(command[2]);
