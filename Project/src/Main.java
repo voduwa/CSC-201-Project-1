@@ -96,7 +96,7 @@ public class Main {
 
         while (myInput.hasNext()) {
 
-            String thisLine = myInput.nextLine().replace("\\S+", " ");
+            String thisLine = myInput.nextLine().trim().replaceAll("\\s+", " ");
 
             if (!thisLine.equals("")) {
                 String[] command = thisLine.split(" ");
@@ -173,8 +173,9 @@ public class Main {
                 }
 
 
-                //case intersections
-                if (Objects.equals(command[0], "intersections")) {
+                //case
+                if(command[0].equals("intersections")){
+                //if (Objects.equals(command[0], "intersections")) {
                     System.out.println("Intersection Pairs: ");
                     //call intersectionpairs from world
                     myWolrd.intersectionPairs();
