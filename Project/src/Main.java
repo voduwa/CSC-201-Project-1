@@ -26,6 +26,8 @@ import java.io.FileReader;
 // anything during the discussion or modifies any computer file
 // during the discussion. I have violated neither the spirit nor
 // letter of this restriction.
+
+
 public class Main {
 
 //Initializing important objects for reading and writing files
@@ -70,7 +72,6 @@ public class Main {
         //create a World class
         World myWolrd = new World();
 
-
         //Asking for file name if not written in command line
         String myFilename;
         if (args.length > 0) {
@@ -91,6 +92,8 @@ public class Main {
             System.out.println("Something went wrong");
             System.exit(1);
         }
+
+
         while (myInput.hasNext()) {
 
             String thisLine = myInput.nextLine().replace("\\S+", " ");
@@ -154,14 +157,14 @@ public class Main {
                 }
 
                 //case regionsearch
-                if (command[0].equals("regionsearch")) {
+                if (Objects.equals(command[0], "regionsearch")) {
 
                     thisLine_x = Integer.parseInt(command[1]);
                     thisLine_y = Integer.parseInt(command[2]);
                     thisLine_w = Integer.parseInt(command[3]);
                     thisLine_h = Integer.parseInt(command[4]);
 
-                    Rectangle RegionRect = new Rectangle(thisLine_x, thisLine_y, thisLine_w, thisLine_h)
+                    Rectangle RegionRect = new Rectangle(thisLine_x, thisLine_y, thisLine_w, thisLine_h);
 
                     //call regionsearch method in world
                     myWolrd.regionSearch(RegionRect);

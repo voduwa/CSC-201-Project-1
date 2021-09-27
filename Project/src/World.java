@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class World {
     public static final int WORlD_X = 0;
@@ -21,6 +22,8 @@ public class World {
         //else{}
         return null;
     }
+
+
     // checks to see if rectangle fits in world
     // If true rectangle is inserted into BST
     public void insertCheck (RectNode r){
@@ -61,6 +64,7 @@ public class World {
         Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
         BSTNode<RectNode> temp;
         boolean removed = false;
+
         while (itr.hasNext()){
             temp = itr.next();
             if (name.equals(temp.getValue().getRectangleName())){
@@ -83,7 +87,7 @@ public class World {
         boolean removed = false;
         while (itr.hasNext()){
             temp = itr.next();
-            if (rect == temp.getValue().getRectangle()){
+            if (rect.equals(temp.getValue().getRectangle())){
                 world_tree.removeNode(temp);
                 removed = true;
 
@@ -95,7 +99,11 @@ public class World {
 
         //after the while loop, if there is no rectangle being removed, then print out some information
         if (!removed) {
-            System.out.println("Rectangle rejected (" + rect + ")");
+            System.out.println("Rectangle rejected (" +
+                    (int)rect.x + ", " +
+                    (int) rect.y + ", " +
+                    (int) rect.width + ", " +
+                    (int) rect.height  + ")");
         }
     }
 
@@ -106,12 +114,12 @@ public class World {
         boolean found = false;
         while (itr.hasNext()){
             temp = itr.next();
-            if (name == temp.getValue().getRectangleName()){
+            if (Objects.equals(name, temp.getValue().getRectangleName())){
                 System.out.println("Rectangle found: " + temp.getValue().toString());
                 found = true;
             }
         }
-        if (found == false){
+        if (!found){
             System.out.println("Rectangle not found: " + name);
         }
     }
@@ -119,16 +127,22 @@ public class World {
     public void regionSearch (Rectangle rect){
         Iterator<BSTNode<RectNode>> itr = world_tree.iterator();
         BSTNode<RectNode> temp;
-        System.out.println("Rectangles intersecting region" + rect);
+        System.out.println("Rectangles intersecting region (" +
+                (int)rect.x + ", " +
+                (int) rect.y + ", " +
+                (int) rect.width + ", " +
+                (int) rect.height + "): ");
         while (itr.hasNext()){
             temp = itr.next();
-            if (temp.getValue().getRectangle().height < 0 || temp.getValue().getRectangle().width < 0){
-                // rectangle rejected
-            } else if (rect.intersects(temp.getValue().getRectangle())){
-                System.out.println(temp.getValue().getRectangleName());
-            } else {
-                // rectangle rejected
+//            if (temp.getValue().getRectangle().height < 0 || temp.getValue().getRectangle().width < 0){
+//                // rectangle rejected
+//            } else
+            if (rect.intersects(temp.getValue().getRectangle())){
+                System.out.println(temp.getValue().toString());
             }
+//           else {
+//                // rectangle rejected
+//            }
         }
     }
 

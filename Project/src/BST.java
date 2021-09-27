@@ -139,7 +139,7 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
 
             inorderHelp(temp.getLeft(), depth+1);
             System.out.print("Node has depth <" + temp.depth + ">, ") ;
-            System.out.println("Value (<" + temp.getValue().getRectangleName() + ">," + temp.getValue().getRectangle());
+            System.out.println("Value " + temp.getValue().toString());
 
         }
 
