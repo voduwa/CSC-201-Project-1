@@ -174,8 +174,8 @@ public class Main {
 
 
                 //case intersections
-                if (command[0].equals("intersections")) {
-
+                if (Objects.equals(command[0], "intersections")) {
+                    System.out.println("Intersection Pairs: ");
                     //call intersectionpairs from world
                     myWolrd.intersectionPairs();
                 }

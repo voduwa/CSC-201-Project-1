@@ -48,6 +48,7 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         }
         return root;
     }
+
     // removeNode method
     public BSTNode<E> removeNode (BSTNode<E> node){
         BSTNode<E> temp = node;
@@ -78,6 +79,7 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         else return findhelp(rt.getRight(), trct);
 
     }
+
     // remove helper method
     private BSTNode removehelp (BSTNode<E> rt, E trct){
         if (rt == null) return null;
@@ -131,10 +133,10 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         System.out.println("BST size is " + nodeCount);
     }
 
-    public void inorderHelp(BSTNode root, int depth){
+    public void inorderHelp(BSTNode<E> root, int depth){
 
         if (root != null){
-            BSTNode<RectNode> temp = root;
+            BSTNode temp = root;
             temp.depth = depth;
 
             inorderHelp(temp.getLeft(), depth+1);

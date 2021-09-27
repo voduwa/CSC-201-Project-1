@@ -10,18 +10,18 @@ public class World {
     BST<RectNode> world_tree = new BST();
     Rectangle world_rect = new Rectangle(WORlD_X,WORlD_Y,WORlD_W, WORlD_H);
 
-    /*
-    if(world_rect.contains(new_rect))
-    else{it cannot}
-    */
-
-    public Rectangle createIntersection(Rectangle r) {
-        Rectangle rect1 = new Rectangle (1,3,4,5) ;
-        Rectangle rect2 = new Rectangle (2,4,6,7);
-        //if ((rect1,rect2)){}
-        //else{}
-        return null;
-    }
+//    /*
+//    if(world_rect.contains(new_rect))
+//    else{it cannot}
+//    */
+//
+//    public Rectangle createIntersection(Rectangle r) {
+//        Rectangle rect1 = new Rectangle (1,3,4,5) ;
+//        Rectangle rect2 = new Rectangle (2,4,6,7);
+//        //if ((rect1,rect2)){}
+//        //else{}
+//        return null;
+//    }
 
 
     // checks to see if rectangle fits in world
@@ -38,6 +38,9 @@ public class World {
 
     // method to find pairs of rectangles that intersect
     public void intersectionPairs(){
+
+        System.out.println("Intersection Pairs: ");
+
         BSTNode<RectNode> temp1;
         BSTNode<RectNode> temp2;
         Iterator<BSTNode<RectNode>> first_itr = world_tree.iterator();
@@ -47,15 +50,12 @@ public class World {
             Iterator<BSTNode<RectNode>> second_itr = world_tree.iterator();
             while (second_itr.hasNext()){
                 temp2 = second_itr.next();
-                if (temp1 == temp2){
-
-                }
-                else if (temp1.getValue().getRectangle().intersects(temp2.getValue().getRectangle())){
+                if (temp1 != temp2 && temp1.getValue().getRectangle().intersects(temp2.getValue().getRectangle())){
                     System.out.println(temp1.getValue().toString() + ":" + temp2.getValue().toString());
-                } else{}
+                }
+
             }
         }
-
 
     }
 
