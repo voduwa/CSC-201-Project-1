@@ -45,12 +45,19 @@ public class World {
         BSTNode<RectNode> temp2;
         Iterator<BSTNode<RectNode>> first_itr = world_tree.iterator();
 
+
         while(first_itr.hasNext()){
             temp1 = first_itr.next();
+            boolean indicator = false;
             Iterator<BSTNode<RectNode>> second_itr = world_tree.iterator();
             while (second_itr.hasNext()){
+
                 temp2 = second_itr.next();
-                if (temp1 != temp2 && temp1.getValue().getRectangle().intersects(temp2.getValue().getRectangle())){
+                if (temp1.equals(temp2)){
+                    indicator = true;
+                }
+
+                if (!temp1.equals(temp2) && temp1.getValue().getRectangle().intersects(temp2.getValue().getRectangle()) && indicator){
                     System.out.println(temp1.getValue().toString() + ":" + temp2.getValue().toString());
                 }
 
