@@ -53,7 +53,7 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
     public BSTNode<E> removeNode (BSTNode<E> node){
         BSTNode<E> temp = node;
         if (temp != null){
-            root = removehelp(node, node.getValue());
+            root = removehelp(root, node.getValue());
             nodeCount--;
         }
         return temp;
@@ -88,15 +88,18 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
         else if (rt.getValue().compareTo(trct) < 0)
             rt.setRight(removehelp(rt.getRight(), trct));
         else {
-            if (rt.getLeft() == null)
-                return rt.getRight();
-            else if (rt.getRight() == null)
-                return rt.getLeft();
-            else{
-                BSTNode<E> temp = getMax(rt.getLeft());
-                rt.setValue((temp.getValue()));
-                rt.setLeft(deleteMax(rt.getLeft()));
-            }
+            if (rt.getValue().equals(trct)){
+                if (rt.getLeft() == null)
+                    return rt.getRight();
+                else if (rt.getRight() == null)
+                    return rt.getLeft();
+                else{
+                    BSTNode<E> temp = getMax(rt.getLeft());
+                    rt.setValue((temp.getValue()));
+                    rt.setLeft(deleteMax(rt.getLeft()));
+                    return rt;
+                   }
+            } rt.setLeft(this.removehelp(rt.getLeft(), trct));
         }
         return rt;
     }
@@ -121,7 +124,7 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
 //        TreeIterator itr = new TreeIterator(root);
         TreeIterator itr = new TreeIterator(this.root);
         while (itr.hasNext()){
-            System.out.print(itr.next().getValue());
+            System.out.println(itr.next().getValue());
         }
     }
 
@@ -142,6 +145,7 @@ public class BST <E extends Comparable<E>> implements Iterable<BSTNode<E>> {
             inorderHelp(temp.getLeft(), depth+1);
             System.out.print("Node has depth <" + temp.depth + ">, ") ;
             System.out.println("Value " + temp.getValue().toString());
+            inorderHelp(temp.getRight(), depth+1);
 
         }
 

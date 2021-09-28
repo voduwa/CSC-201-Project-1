@@ -39,8 +39,6 @@ public class World {
     // method to find pairs of rectangles that intersect
     public void intersectionPairs(){
 
-        System.out.println("Intersection Pairs: ");
-
         BSTNode<RectNode> temp1;
         BSTNode<RectNode> temp2;
         Iterator<BSTNode<RectNode>> first_itr = world_tree.iterator();
@@ -163,9 +161,9 @@ public class World {
 //            System.out.println();
 //        }
 //    }
-
-    public void BSTdump() {
-        world_tree.inorder();
+    public void BSTdump(){world_tree.inorder();}
+    public void dump() {
+        world_tree.print();
     }
 
 }

@@ -193,6 +193,8 @@ public class Main {
                 if (command[0].equals("dump")) {
 
                     //call dump from world class
+                    //myWolrd.dump();
+
                     myWolrd.BSTdump();
                 }
             }
